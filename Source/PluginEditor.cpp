@@ -52,6 +52,9 @@ FaoxiDriveAudioProcessorEditor::FaoxiDriveAudioProcessorEditor(FaoxiDriveAudioPr
     labelVolume.attachToComponent(&sliderVolume, false);
     addAndMakeVisible(labelVolume);
 
+    sliderTone.setTextValueSuffix(" Hz");
+
+    sliderVolume.setTextValueSuffix(" dB");
 
 
     setSize(560, 300);
@@ -66,7 +69,7 @@ void FaoxiDriveAudioProcessorEditor::paint(juce::Graphics& g)
     g.fillAll(juce::Colours::black);
     g.setColour(juce::Colours::white);
     g.setFont(20.0f);
-    g.drawFittedText("Distorsion", 0, 20, getWidth(), 30, juce::Justification::centred, 1);
+    g.drawFittedText("FaoxiDrive", 0, 20, getWidth(), 30, juce::Justification::centred, 1);
 }
 
 void FaoxiDriveAudioProcessorEditor::resized()

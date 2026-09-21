@@ -21,7 +21,8 @@ FaoxiDriveAudioProcessor::creerParametres()
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID { "drive", 1 }, // drive est l'identifaint interne, et 1 c'est la version
         "Drive", // Drive est le nom affiché dans ableton
-        1.0f, 50.0f, 10.0f));
+        juce::NormalisableRange<float>(1.0f, 50.0f, 0.1f),
+    10.0f));
     // min , max, default
 
     // on ajoute un deuxieme parametres
@@ -34,10 +35,11 @@ FaoxiDriveAudioProcessor::creerParametres()
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID { "volume", 1 },
         "Volume", // Volume est le nom affiché dans ableton
-        -24.0f, 6.0f, 0.0f));
+        juce::NormalisableRange<float>(-24.0f, 6.0f, 0.1f),
+    0.0f));
 
     // on change la plage
-    juce::NormalisableRange<float> plageTone(500.0f, 20000.0f);
+    juce::NormalisableRange<float> plageTone(500.0f, 20000.0f,1.0f);
     plageTone.setSkewForCentre(3000.0f); // quand le potard est au milieu je veux 3000 Hz;
 
     layout.add(std::make_unique<juce::AudioParameterFloat>(
